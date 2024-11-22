@@ -11,17 +11,17 @@ module.exports = (sequelize) => {
             router.use(express.json());
 
             // 从请求体中提取参数
-            const { title, author } = req.body;
-
+            const {  title, author, description, remark, category, tags } = req.body;
+            console.log("title:", title);
             // 使用 raw SQL 插入数据
             const insertQuery = `
-                INSERT INTO blog.blog_information (title , author)
-                VALUES (:title , :author)
+                INSERT INTO blog.blog_information ( title, author, description, remark, category, tags)
+                VALUES ( :title, :author, :description, :remark, :category, :tags)
             `;
 
             // 使用 Sequelize 执行插入语句
             await sequelize.query(insertQuery, {
-                replacements: { title, author },
+                replacements: {  title, author, description, remark, category, tags },
             });
 
             console.log("Blog inserted successfully!");

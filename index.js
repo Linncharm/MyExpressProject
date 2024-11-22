@@ -2,12 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { Sequelize } = require("sequelize");
 
+const cors = require("cors")
+
 // 导入路由模块
 const blogGetRoute = require("./routers/blog/getBlogInformation");
 const blogSetRoute = require("./routers/blog/setBlogInformation");
 const blogDelRoute = require("./routers/blog/delBlogInformation");
 
 const app = express();
+
+// 启用 CORS 中间件，允许所有来源访问
+app.use(cors());
 const port = 3000;
 
 // 使用 body-parser 解析 JSON 请求
