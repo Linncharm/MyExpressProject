@@ -5,6 +5,7 @@ const { Sequelize } = require("sequelize");
 // 导入路由模块
 const blogGetRoute = require("./routers/blog/getBlogInformation");
 const blogSetRoute = require("./routers/blog/setBlogInformation");
+const blogDelRoute = require("./routers/blog/delBlogInformation");
 
 const app = express();
 const port = 3000;
@@ -41,10 +42,12 @@ app.get("/api/v1/blog", (req, res) => {
 // 将 sequelize 实例传递给路由模块
 app.use("/api/v1/blog", blogGetRoute(sequelize));
 app.use("/api/v1/blog", blogSetRoute(sequelize));
+app.use("/api/v1/blog", blogDelRoute(sequelize));
 
 // 启动服务器
 app.listen(port, () => {
     console.log(`Server running at http://127.0.0.1:${port}/api/v1/blog`);
     console.log(`Server will running at http://127.0.0.1:${port}/api/v1/blog/get`);
     console.log(`Server will running at http://127.0.0.1:${port}/api/v1/blog/set`);
+    console.log(`Server will running at http://127.0.0.1:${port}/api/v1/blog/del`);
 });
