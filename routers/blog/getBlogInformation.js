@@ -8,6 +8,7 @@ module.exports = (sequelize) => {
             console.log("Fetching blogs...");
             // 使用 raw SQL 查询博客数据
             const [blogs] = await sequelize.query("SELECT * FROM blog.blog_information");
+            console.log(blogs)
             res.status(200).json(blogs);
         } catch (error) {
             console.error("Error fetching blogs:", error);
