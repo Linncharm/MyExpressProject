@@ -2,9 +2,10 @@
   "name": "myexpressproject",
   "version": "1.0.0",
   "description": "based on express.js",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Linn",
   "license": "ISC",
@@ -14,5 +15,8 @@
     "express": "^4.21.1",
     "mysql": "^2.18.1",
     "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
